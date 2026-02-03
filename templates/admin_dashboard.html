@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="logo">University M_S</div>
+    <a href="/logout" class="logout-btn">Logout</a>
+</div>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <a class="active">Dashboard</a>
+        <a>Admin</a>
+        <a>Manage Academic</a>
+        <a>Teacher</a>
+        <a>Student</a>
+        <a>Fees</a>
+        <a>Events</a>
+        <a>Tickets</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content">
+
+        <h2>Welcome Admin <span>Control Panel</span></h2>
+
+        <!-- CARDS -->
+        <div class="cards">
+            <div class="card blue">
+                <h1>{{ students }}</h1>
+                <p>Students</p>
+            </div>
+            <div class="card green">
+                <h1>{{ teachers }}</h1>
+                <p>Teachers</p>
+            </div>
+            <div class="card orange">
+                <h1>{{ departments }}</h1>
+                <p>Departments</p>
+            </div>
+            <div class="card red">
+                <h1>{{ programs }}</h1>
+                <p>Programs</p>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-box">
+            <h3>Events Table</h3>
+            <table>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>FYP-2</td>
+                    <td>Submission</td>
+                    <td>2026-02-03</td>
+                    <td>
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

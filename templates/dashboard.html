@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <h2>Student Dashboard</h2>
+
+        <a href="/logout">
+            <button class="logout-btn">Logout</button>
+        </a>
+    </div>
+
+    <!-- Primary Action -->
+    <a href="/add">
+        <button class="primary">Add Student</button>
+    </a>
+
+    <!-- Search Bar -->
+    <form method="get" action="/dashboard" class="search-bar">
+        <input 
+            type="text" 
+            name="search" 
+            placeholder="Search by name or roll"
+            value="{{ request.args.get('search','') }}"
+        >
+        <button type="submit" class="primary">Search</button>
+    </form>
+
+    <!-- Student Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>Course</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for s in students %}
+            <tr>
+                <td>{{ s.name }}</td>
+                <td>{{ s.roll }}</td>
+                <td>{{ s.course }}</td>
+                <td>{{ s.email }}</td>
+                <td class="action">
+                    <a href="/edit/{{ s.id }}" class="edit">Edit</a>
+                    <a href="/delete/{{ s.id }}" class="delete">Delete</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" style="text-align:center; color:#6b7280;">
+                    No students found
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

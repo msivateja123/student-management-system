@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ================= TOP BAR ================= -->
+    <div class="top-bar">
+        <h2>Student Dashboard</h2>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+
+    <!-- ================= STUDENT INFO ================= -->
+    <div class="card welcome-card">
+        <h3>👋 Welcome, {{ student.name }}</h3>
+
+        <div class="info-grid">
+            <p><strong>Roll No:</strong> {{ student.roll }}</p>
+            <p><strong>Course:</strong> {{ student.course }}</p>
+            <p><strong>Email:</strong> {{ student.email }}</p>
+        </div>
+    </div>
+
+    <!-- ================= SKILLS ================= -->
+    <div class="card">
+        <h3>🧠 Skills</h3>
+
+        <form method="post" action="/add-skill" class="inline-form">
+            <input type="text" name="skill_name" placeholder="Skill name" required>
+
+            <select name="skill_level">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+            </select>
+
+            <button type="submit" class="primary">Add Skill</button>
+        </form>
+
+        <ul class="list">
+            {% for s in skills %}
+                <li>
+                    {{ s.skill_name }}
+                    <span class="badge {{ s.skill_level|lower }}">
+                        {{ s.skill_level }}
+                    </span>
+                </li>
+            {% else %}
+                <li class="empty">No skills added yet</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- ================= PROJECTS ================= -->
+    <div class="card">
+        <h3>📁 Projects</h3>
+
+        <form method="post" action="/add-project" class="project-form">
+            <input type="text" name="project_name" placeholder="Project name" required>
+            <textarea name="description" placeholder="Project description" required></textarea>
+            <button type="submit" class="primary">Add Project</button>
+        </form>
+
+        <div class="project-list">
+            {% for p in projects %}
+                <div class="project-card">
+                    <h4>{{ p.project_name }}</h4>
+                    <p>{{ p.description }}</p>
+                </div>
+            {% else %}
+                <p class="empty">No projects added yet</p>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

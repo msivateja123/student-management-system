@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f1f4f7;
+}
+
+/* TOP BAR */
+.topbar {
+    height: 55px;
+    background: #3c8dbc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logout-btn {
+    background: #e74c3c;
+    padding: 6px 12px;
+    color: white;
+    text-decoration: none;
+}
+
+/* LAYOUT */
+.layout {
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: #222d32;
+    min-height: 100vh;
+}
+
+.sidebar a {
+    display: block;
+    padding: 14px;
+    color: #b8c7ce;
+    text-decoration: none;
+    border-bottom: 1px solid #2c3b41;
+}
+
+.sidebar a:hover,
+.sidebar .active {
+    background: #1e282c;
+    color: white;
+}
+
+/* CONTENT */
+.content {
+    flex: 1;
+    padding: 25px;
+}
+
+.content h2 span {
+    color: #777;
+    font-size: 14px;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.card {
+    padding: 25px;
+    color: white;
+    border-radius: 4px;
+}
+
+.card h1 {
+    font-size: 36px;
+}
+
+.blue { background: #00c0ef; }
+.green { background: #00a65a; }
+.orange { background: #f39c12; }
+.red { background: #dd4b39; }
+
+/* TABLE */
+.table-box {
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.edit {
+    background: #00c0ef;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
+
+.delete {
+    background: #dd4b39;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
